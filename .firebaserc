@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "babyclassic-aeb8a": {
+      "hosting": {
+        "babyClassic": [
+          "babyclassic-aeb8a"
+        ]
+      }
+    }
+  }
+}

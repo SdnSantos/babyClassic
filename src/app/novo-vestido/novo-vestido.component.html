@@ -1,0 +1,76 @@
+<form [formGroup]="novoVestido" >
+  <div id="form">
+    <div id="inputs">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Qual o nome do vestido?</mat-label>
+        <input matInput formControlName="nome">
+        <mat-icon matSuffix>Vestido</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Qual o tamanho do vestido?</mat-label>
+        <input matInput formControlName="tamanho">
+        <mat-icon matSuffix>Tamanho</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Descreva sobre o vestido</mat-label>
+        <textarea #message maxlength="512" matInput formControlName="descricao" rows="8" ></textarea>
+        <mat-icon matSuffix>description</mat-icon>
+        <mat-hint>{{ message.value.length }} / 512</mat-hint>
+      </mat-form-field>
+    </div>
+
+      <!-- <mat-form-field appearance='fill'>
+        <mat-label>Escolha um estado</mat-label>
+        <mat-select formControlName="estado" (selectionChange)="buscaCidade(novoVestido.value.estado)" >
+          <mat-option [value]="estado" *ngFor="let estado of data">
+            {{ estado.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
+      <!-- <mat-form-field appearance="fill" *ngIf="novoVestido.value.estado" >
+        <mat-label>Escolha uma cidade:</mat-label>
+        <mat-select formControlName="cidade">
+          <mat-option [value]="cidade" *ngFor="let cidade of cidades" >
+            {{ cidade }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
+    <div id="imagem-upload">
+
+        <div>
+          <button type="button" id="anx" mat-flat-button (click)="fileInput.click()" >
+            Anexar Imagem
+          </button>
+          <input hidden (change)="onFileSelect($event)" #fileInput  type="file" id="File">
+        </div>
+
+        <div id="imagem-content" (click)="fileInput.click()">
+          <mat-icon *ngIf="!selectedFile">photo_camera</mat-icon>
+          <img *ngIf="selectedFile" [src]="selectedFile" width="300">
+        </div>
+
+        <div id="rating">
+          <button mat-icon-button class="ic" *ngFor="let ratingId of ratingArr; index as i" (click)="onclick(i+1)">
+            <mat-icon>
+              {{ showIcon(i) }}
+            </mat-icon>
+          </button>
+        </div>
+    </div>
+  </div>
+
+  <!-- Salvar as informações -->
+  <div id="acoes">
+    <div>
+        <button mat-flat-button (click)="salvarVestido()">
+            Salvar
+        </button>
+    </div>
+</div>
+
+</form>
